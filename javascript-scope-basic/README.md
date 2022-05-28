@@ -57,6 +57,8 @@ console.log(x); // global
 -   의도치 않은 재할당에 의한 상태 변화 가능성
 -   위 두 상황이 발생할 수 있어 코드를 예측하기 어렵게 만드므로 사용을 억제하여야 한다.
 
+<br/>
+
 ### `비 블록 레벨 스코프(Non block-level scope)`
 
 -   자바스크립트는 블록 레벨 스코프를 사용하지 않으므로 함수 밖에서 선언된 변수는 코드 블록 내에서 선언되었다할지라도 모두 전역 스코프을 갖게된다.
@@ -68,7 +70,11 @@ if (true) {
 console.log(x); // global
 ```
 
+<br/>
+
 ### `함수 레벨 스코프(Function-level scope)`
+
+<br/>
 
 `일반적인 함수레벨 스코프`
 
@@ -88,6 +94,8 @@ console.log(x); // global
 console.log(y); // ReferenceError: y is not defined
 ```
 
+<br/>
+
 `전역변수와 지역변수명이 중복된 경우`
 
 -   아래와 같이 전역변수x와 지역변수x가 중복선언된 경우, 지역변수를 우선 참조한다.
@@ -103,6 +111,8 @@ function func() {
 func(); // local
 console.log(x); // global
 ```
+
+<br/>
 
 `함수 내부에 존재하는 내부함수의 경우`
 
@@ -149,6 +159,8 @@ function foo() {
 foo();
 console.log(x); // 10
 ```
+
+<br/>
 
 `암묵적 전역`
 
