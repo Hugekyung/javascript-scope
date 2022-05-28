@@ -67,3 +67,39 @@ if (true) {
 }
 console.log(x); // global
 ```
+
+### `함수 레벨 스코프(Function-level scope)`
+
+`일반적인 함수레벨 스코프`
+
+-   자바스크립트는 함수 레벨 스코프를 사용한다.
+-   함수 내에서 선언된 매개변수와 변수는 함수 외부에서는 유효하지 않다.
+-   따라서 변수 b는 지역 변수이다.
+
+```js
+var x = "global";
+
+function func() {
+    var y = "local";
+}
+func();
+
+console.log(x); // global
+console.log(y); // ReferenceError: y is not defined
+```
+
+`전역변수와 지역변수명이 중복된 경우`
+
+-   아래와 같이 전역변수x와 지역변수x가 중복선언된 경우, 지역변수를 우선 참조한다.
+
+```js
+var x = "global";
+
+function func() {
+    var x = "local";
+    console.log(x);
+}
+
+func(); // local
+console.log(x); // global
+```
