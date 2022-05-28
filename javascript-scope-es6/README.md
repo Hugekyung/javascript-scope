@@ -80,3 +80,15 @@ console.log(bar); // ReferenceError: bar is not defined
 ```
 
 ### 변수 중복 선언 금지
+
+-   let 키워드로 변수를 선언할 경우 동일한 이름을 중복해서 사용할 수 없다.
+
+```js
+var foo = 123;
+var foo = 456; // 중복 선언 허용
+
+let bar = 123;
+let bar = 456; // Uncaught SyntaxError: Identifier 'bar' has already been declared
+```
+
+### 호이스팅
