@@ -79,6 +79,8 @@ console.log(foo); // 123
 console.log(bar); // ReferenceError: bar is not defined
 ```
 
+<br/>
+
 ### 변수 중복 선언 금지
 
 -   let 키워드로 변수를 선언할 경우 동일한 이름을 중복해서 사용할 수 없다.
@@ -91,4 +93,27 @@ let bar = 123;
 let bar = 456; // Uncaught SyntaxError: Identifier 'bar' has already been declared
 ```
 
+<br/>
+
 ### 호이스팅
+
+호이스팅이란 var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성을 말한다. 하지만 let 키워드를 통해 선언된 변수의 경우에는 호이스팅되지 않고 참조 에러를 발생한다.<br/>
+var와 달리 let 키워드를 통한 선언에서는 호이스팅이 되지 않는 이유는 두 키워드를 사용한 변수 생성에서의 단계가 다르게 동작하기 때문이다.
+
+<br/>
+
+`변수 생성의 3단계`
+
+> `선언 단계`<br/>
+
+-   변수를 실행 컨텍스트의 변수 객체(Variable Object)에 등록
+-   이 변수 객체는 스코프가 참조하는 대상이 됨
+
+> `초기화 단계`<br/>
+
+-   변수 객체(Variable Object)에 등록된 변수를 위한 공간을 메모리에 확보
+-   이 단계에서 변수는 undefined로 초기화
+
+> `할당 단계`<br/>
+
+-   undefined로 초기화된 변수에 실제 값을 할당
