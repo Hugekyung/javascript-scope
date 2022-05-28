@@ -103,3 +103,49 @@ function func() {
 func(); // local
 console.log(x); // global
 ```
+
+`함수 내부에 존재하는 내부함수의 경우`
+
+-   내부함수는 가장 인접한 스코프의 값을 따른다.
+-   아래 상황에서 bar()함수는 foo()함수 내부에 있으며, bar()함수는 자신의 외부함수인 foo()함수의 x 변수를 참조할 수 있다.
+-   자신이 선언되었을 시점의 스코프를 기준으로 실행하는 개념인 `클로저`와 비슷하다.
+
+```js
+var x = "global";
+
+function foo() {
+    var x = "local";
+    console.log(x);
+
+    function bar() {
+        // 내부함수
+        console.log(x); // local
+    }
+
+    bar();
+}
+foo();
+console.log(x); // global
+```
+
+-   함수 내부에서 전역변수를 참조할 수 있으므로, 전역변수의 값도 변경할 수 있다.
+-   또, 전역변수는 물론 상위함수에서 선언한 변수에도 접근과 변경이 가능하다.
+
+```JS
+var x = 10;
+
+function foo() {
+    var x = 100;
+    console.log(x); // 100
+
+    function bar() {
+        // 내부함수
+        x = 1000;
+        console.log(x); // 1000
+    }
+
+    bar();
+}
+foo();
+console.log(x); // 10
+```
