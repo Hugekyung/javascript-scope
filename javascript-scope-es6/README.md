@@ -215,7 +215,7 @@ console.log(user); // { name: 'Kim' }
 
 <br/>
 
-## 4. 결론(var vs let vs const)
+## 4. 결론(var vs let vs const) : const를 적극 활용하자!
 
 -   변수 선언에는 기본적으로 const를 사용하고, 재할당이 필요할 경우에만 let을 사용하는 것이 좋다.
 -   const를 통한 변수 선언을 하면 의도치 않은 재할당을 방지할 수 있어 안전하다는 장점이 있다.
