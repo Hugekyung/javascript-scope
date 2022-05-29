@@ -2,7 +2,7 @@
 
 `let, const 기반의 자바스크립트 블록레벨 스코프`
 
-## 개요
+## 1. 개요
 
 ES6가 등장하면서 자바스크립트에는 let과 const 기반의 블록레벨 스코프가 추가되었다. 그 이유는 기존의 var 기반의 변수선언이 각종 문제를 야기하기 때문이다.
 
@@ -42,7 +42,7 @@ console.log(x); // local - for loop 내부에서 변수 x 재할당 가능
 
 <br/>
 
-## let
+## 2. let
 
 -   자바스크립트에서는 기본적으로 함수레벨 스코프를 따른다.
 -   foo라는 변수는 전역에서 생성되었고, 블록 레벨에서 465라는 값으로 재선언 및 재할당되었다(기존의 foo를 덮어쓴다).
@@ -152,4 +152,63 @@ console.log(foo); // undefined
 
 foo = 1; // 할당문에서 할당 단계가 실행된다
 console.log(foo); // 1
+```
+
+<br/>
+
+## 3. const
+
+const는 상수를 위해 사용하지만 반드시 상수만을 위해 사용되지는 않는다. const는 let과 특징이 대부분 동일하며 몇 가지 부분에서 차이가 있다.
+
+<br/>
+
+### 선언과 초기화
+
+-   let 키워드를 통한 변수 선언은 재할당이 자유롭지만, const는 재할당이 금지된다.
+-   또, const는 반드시 선언과 동시에 할당이 이루어져야 한다.
+
+```js
+const FOO = 123;
+FOO = 456; // 재할당 불가, TypeError: Assignment to constant variable.
+
+const FOO; // 변수 선언만 하는 것은 불가능, SyntaxError: Missing initializer in const declaration
+```
+
+<br/>
+
+### 상수로써의 기능
+
+-   const는 상수의 장점이라고 할 수 있는 가독성과 유지보수 측면의 편리함을 위해 적극적으로 활용할 수 있다.
+-   const는 객체의 선언에도 사용할 수 있지만, 역시 재할당은 금지된다.
+
+```js
+// 10의 의미를 알기 어렵기 때문에 가독성이 좋지 않다.
+if (rows > 10) {
+}
+
+// 값의 의미를 명확히 기술하여 가독성이 향상되었다.
+const MAXROWS = 10;
+if (rows > MAXROWS) {
+}
+```
+
+<br/>
+
+### const를 활용한 객체 선언
+
+-   const는 객체 선언에도 활용할 수 있다.
+-   하지만 앞선 특징과 마찬가지로 재할당은 금지되어 있는데, 주의할 점은 객체의 내용은 변경할 수 있다는 사실이다.
+-   객체의 내용이 변경되더라도 객체 자체의 기존에 할당된 주소값은 변경되지 않으며, 객체의 프로퍼티를 추가하거나 삭제 혹은 변경을 할 수 있다.
+-   따라서 명시적으로 객체를 재할당해야 하는 경우가 아니라면, const를 사용하는 것이 좋다.
+
+```js
+const user = { name: "Lee" };
+
+// const 변수는 재할당이 금지된다.
+user = {}; // TypeError: Assignment to constant variable.
+
+// 객체의 내용은 변경할 수 있다.
+user.name = "Kim";
+
+console.log(user); // { name: 'Kim' }
 ```
