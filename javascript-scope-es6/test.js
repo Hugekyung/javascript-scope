@@ -8,4 +8,11 @@ if (true) {
     updated = { ...updated, description: "description" };
 }
 
-console.log(updated);
+let queryString = "";
+Object.entries(updated).forEach((data) => {
+    const key = data[0];
+    const value = data[1];
+    queryString += `${key}='${value}', `;
+});
+
+console.log(queryString);
